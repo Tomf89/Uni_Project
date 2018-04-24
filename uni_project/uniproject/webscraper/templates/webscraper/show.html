@@ -1,0 +1,52 @@
+<html>
+<head>
+	
+		
+
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+
+	<body ng-app="webscraper">
+		{% verbatim %}
+		<div ng-controller="WebscraperController">
+			<form id="test1" action=URL method="post">
+				<button ng-click="SendData()">Follow Artist</button>
+			</form>
+		</div>
+		
+		{% endverbatim %}
+		
+		<p> you are logged in under {{ email }} account</p>
+
+
+		{% for rise_against in data.rise_againsts%}
+		Event Day: {{rise_against.event_day}} <br>
+		Event Month: {{rise_against.event_month}} <br>
+		Event Year: {{rise_against.event_year}} <br>
+		Event URL: {{rise_against.event_url}}<br>
+		Event Venue: {{rise_against.event_venue}} <br>
+		Event City and Country: {{rise_against.event_city_country}} <br>
+
+<hr>
+{% endfor %}
+<script>
+		var e = "{{email}}";
+		var b = "http://localhost:8080/subscribe/?user=";
+		var c = "&band=rise_against";
+		var URL = b+e+c;
+		document.getElementById("test1").action = URL;
+		console.log(URL);
+		console.log(e);
+		
+		// function updateHTML(elmId, value){
+		// 	var elem = document.getElementById(elmId);
+		// 	if(typeof elem !== 'undefined' && elem !== null){
+		// 		document.getElementById(elmId).innerHTML = value
+		// 	}
+		// }
+</script>
+	</body>
+</html>
+<!-- <form method="POST" action="/post-feedback">
+        <input type="submit" value="Follow Artist">
+</form><br> -->

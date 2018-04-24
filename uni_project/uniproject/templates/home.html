@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+             <p class="display-4">Hello, {{ user.first_name }}</p>
+	{% else %}
+             <a class="lead" href="{% url 'login' %}">Log in</a>
+	{% endif %}
+	<a href="http://127.0.0.1:8000/webscraper/">Lookup Artist</a>
+{% endblock content %}
